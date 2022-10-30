@@ -116,7 +116,7 @@ const validateGoldbachFromABase = (from: number, to: number) => {
   let isValid = true;
 
   console.log(`Calculating from: %d, to: %d`, from, to);
-  console.log(`This range gives for %d event numbers`, evens.length);
+  console.log(`This range gives %d even numbers to calculate`, evens.length);
 
   for (let i = 0; i < evens.length; i++) {
     if (!isGoldBachConjetureValid(evens[i])) {
