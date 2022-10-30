@@ -48,20 +48,24 @@ const getPrimeNumbers = (n: number) => {
 /**
  * From a even number we will get the primes that when being added gives n
  * @param n number to calculate (must me even number)
- * @returns Array of an array of numbers that when added give n
+ * @returns The pair of primes that being added gives n
  */
-const getSumOfPrimesFromANumber = (n: number) => {
+const getFirstSumOfPrimesToGetN = (n: number) => {
   if (n % 2 !== 0) return [];
 
-  const primesOfN = getPrimeNumbers(n);
-  const res: Array<number[]> = [];
+  const primesOfN = getPrimeNumbers(n).sort((a, b) => b - a);
+  const res: Array<number> = [];
 
   for (let i = 0; i < primesOfN.length; i++) {
     for (let j = 0; j < primesOfN.length; j++) {
       if (primesOfN[i] <= primesOfN[j] && primesOfN[i] + primesOfN[j] === n) {
-        res.push([primesOfN[i], primesOfN[j]]);
+        res.push(...[primesOfN[i], primesOfN[j]]);
+        break;
       }
+
+      if (res.length) break;
     }
+    if (res.length) break;
   }
 
   return res;
@@ -84,7 +88,7 @@ const getAllEvenNumberInARange = (fromNumber: number, toNumber: number) => {
 };
 
 /**
- * Is Goldbach Conjeture Valid from a number
+ * Is Goldbach conjeture Valid from a number
  * All even number greater than 2, can be written as the sum of two prime numbers
  *
  * @param n number to calculate
@@ -95,17 +99,24 @@ const isGoldBachConjetureValid = (n: number) => {
     throw new Error("Can only be calculated with even numbers above 2");
   }
 
-  return getSumOfPrimesFromANumber(n).length > 0;
+  return getFirstSumOfPrimesToGetN(n).length > 0;
 };
 
 /**
  * Loops until reach the base number to get the all possibilities to match the goldbach conjeture.
- * @param baseNumber Base number represent the top for the loop process
+ * @param to From number
+ * @param to To number
  * @returns false if it finds that the conjeture is wrong.
  */
-const validateGoldbachFromABase = (baseNumber: number) => {
-  const evens = getAllEvenNumberInARange(2, baseNumber);
+const validateGoldbachFromABase = (from: number, to: number) => {
+  if (from >= to) return true;
+
+  from = from <= 2 ? 2 : from;
+  const evens = getAllEvenNumberInARange(from, to);
   let isValid = true;
+
+  console.log(`Calculating from: %d, to: %d`, from, to);
+  console.log(`This range gives for %d event numbers`, evens.length);
 
   for (let i = 0; i < evens.length; i++) {
     if (!isGoldBachConjetureValid(evens[i])) {
@@ -117,6 +128,6 @@ const validateGoldbachFromABase = (baseNumber: number) => {
   return isValid;
 };
 
-const res = validateGoldbachFromABase(10000);
+const res = validateGoldbachFromABase(0, 2000);
 
-console.log(res);
+console.log(res ? "Conjecture is right 😍" : "Conjeture has failed 😮");

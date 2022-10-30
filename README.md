@@ -14,9 +14,13 @@ From the number 10, we get all its pairs: [2,4,6,8,10] and from each of them we 
 
 Being able to find the breakout point to see if the conjecture is false... although at the moment I have tested only up to 100000 with all its possible pairs and the result has been validated.
 
+## Update
+
+- Add possibility to test using ranges.
+
 ## Next steps.
 
-Because there is a large computational expense in using a maximum number to calculate the conjecture, I was thinking that maybe we could also use ranges between two numbers for example, if we already know that between 1 and 10000 there is no case in which the If the guess fails, we could then calculate between 10001 and 20000, thereby reducing the number of loops the application has to go through to calculate this.
+Create a incremental query to validate and store all tested scenarios where the tests returned that the conjecture is true, so we can validate the next fragment uppon from that. eg. txt file with all tested scenarios: Table with the range tested.
 
 ## How to use this application
 
