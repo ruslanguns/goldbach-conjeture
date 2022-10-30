@@ -1,0 +1,12 @@
+{
+  "name": "goldbach",
+  "module": "index.ts",
+  "devDependencies": {
+    "bun-types": "^0.2.0",
+    "chokidar": "^3.5.3"
+  },
+  "scripts": {
+    "start": "bun run index.ts"
+  },
+  "type": "module"
+}
