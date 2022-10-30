@@ -20,7 +20,7 @@ Because there is a large computational expense in using a maximum number to calc
 
 ## How to use this application
 
-Before using the application make sure you have `BunJS` runner installed. [BunJs website](https://bun.sh/).
+To be able to run the application make sure you have `BunJS` runner installed. [BunJs website](https://bun.sh/).
 
 Install deps:
 
