@@ -84,13 +84,13 @@ const getAllEvenNumberInARange = (fromNumber: number, toNumber: number) => {
 };
 
 /**
- * Is Goldbash Conjeture Valid from a number
+ * Is Goldbach Conjeture Valid from a number
  * All even number greater than 2, can be written as the sum of two prime numbers
  *
  * @param n number to calculate
  * @returns if it is valid
  */
-const isGoldBashConjetureValid = (n: number) => {
+const isGoldBachConjetureValid = (n: number) => {
   if (n <= 2 || n % 2 === 1) {
     throw new Error("Can only be calculated with even numbers above 2");
   }
@@ -99,16 +99,16 @@ const isGoldBashConjetureValid = (n: number) => {
 };
 
 /**
- * Loops until reach the base number to get the all possibilities to match the goldbash conjeture.
+ * Loops until reach the base number to get the all possibilities to match the goldbach conjeture.
  * @param baseNumber Base number represent the top for the loop process
  * @returns false if it finds that the conjeture is wrong.
  */
-const validateGoldbashFromABase = (baseNumber: number) => {
+const validateGoldbachFromABase = (baseNumber: number) => {
   const evens = getAllEvenNumberInARange(2, baseNumber);
   let isValid = true;
 
   for (let i = 0; i < evens.length; i++) {
-    if (!isGoldBashConjetureValid(evens[i])) {
+    if (!isGoldBachConjetureValid(evens[i])) {
       isValid = false;
       break;
     }
@@ -117,6 +117,6 @@ const validateGoldbashFromABase = (baseNumber: number) => {
   return isValid;
 };
 
-const res = validateGoldbashFromABase(10000);
+const res = validateGoldbachFromABase(10000);
 
 console.log(res);
